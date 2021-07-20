@@ -1,0 +1,395 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <title>ATISS: Autoregressive Transformers for Indoor Scene Synthesis</title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="style_project_page.css?cache=7754391418498779889">
+        <link href="https://fonts.googleapis.com/css?family=Arvo|Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/@glidejs/glide/dist/css/glide.core.min.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://unpkg.com/@glidejs/glide"></script>
+        <style type="text/css">
+            .side-text {
+                width:60%;
+                display:inline-block;
+                vertical-align:top;
+            }
+            .side-image {
+                width: 38%;
+                display: inline-block;
+                vertical-align: top;
+            }
+            .controls {
+                margin-bottom: 10px;
+            }
+            .left-controls {
+                display: inline-block;
+                vertical-align: top;
+                width: 80%;
+            }
+            .right-controls {
+                display: inline-block;
+                vertical-align: top;
+                width: 19%;
+                text-align: right;
+            }
+            .render_window {
+                display: inline-block;
+                vertical-align: middle;
+                box-shadow: 1px 0px 5px black;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                width: calc(33% - 10px);
+            }
+            .progress {
+                background: #666;
+                position: relative;
+                height: 5px;
+                margin-bottom: -5px;
+                display: none;
+            }
+            .glide__slide:hover {cursor: grab;}
+            .glide__slide:active {cursor: grabbing;}
+            .glide__slide img {width: 90%;}
+            .glide__bullets {
+                text-align: center;
+            }
+            .glide__bullet--active {
+                color: #aaa; 
+            }
+
+            @media (max-width: 400px) {
+                .render_window {
+                    display: block;
+                    width: 90%;
+                    margin: 10px auto;
+                }
+            }
+            @media (max-width: 700px) {
+                .side-image {
+                    display: block;
+                    width: 80%;
+                    margin: 10px auto;
+                }
+                .side-text {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="section">
+            <h1 class="project-title">
+                ATISS: Autoregressive Transformers for Indoor Scene Synthesis
+            </h1>
+            <div class="authors">
+                <a href=https://paschalidoud.github.io/>
+                    Despoina Paschalidou <sup>1,3,4</sup>
+                </a>
+                <a href=https://amlankar.github.io/>
+                    Amlan Kar <sup>4,5,6</sup>
+                </a>
+                <a href=http://shumash.com/>
+                    Maria Shugrina <sup>4</sup>
+                </a>
+                <a href=https://scholar.google.de/citations?user=rFd-DiAAAAAJ&hl=de>
+                    Karsten Kreis <sup>4</sup>
+                </a>
+                <a href=http://cvlibs.net/>
+                    Andreas Geiger <sup>1,2,3</sup>
+                </a>
+                <a href=https://www.cs.utoronto.ca/~fidler/>
+                    Sanja Fidler <sup>4,5,6</sup>
+                </a>
+            </div>
+
+            <div class="affiliations">
+                <span><sup>1</sup> Autonomous Vision Group, MPI for
+                    Intelligent Systems Tübingen</span>
+                <span><sup>2</sup> University of Tübingen</span> <br/>
+                <span><sup>3</sup> Max Planck ETH Center for Learning Systems</span>
+                <span><sup>4</sup> NVIDIA</span>
+                <span><sup>5</sup> University of Toronto</span>
+                <span><sup>6</sup> Vector Institute</span>
+            </div>
+
+            <!--<div class="project-conference">
+                CVPR 2021
+            </div>
+            -->
+
+            <div class="project-icons">
+                <a href="#">
+                    <i class="fa fa-file"></i> <br/>
+                    Paper
+                </a>
+                <a href="#">
+                    <i class="fa fa-github"></i> <br/>
+                    Code
+                </a>
+                <!--<a href="https://www.youtube.com/watch?v=6WK3B0IZJsw">
+                    <i class="fa fa-youtube-play"></i> <br/>
+                    Video
+                </a>
+                <a href="https://paschalidoud.github.io/data/Paschalidou2021CVPR_poster.pdf">
+                    <i class="fa fa-picture-o"></i> <br/>
+                    Poster
+                </a>
+                <a href="http://www.cvlibs.net/publications/Paschalidou2021CVPR_slides.pdf">
+                    <i class="fa fa-file-powerpoint-o"></i> <br/>
+                    Slides
+                </a>
+                -->
+                <!--<a href="https://autonomousvision.github.io/neural-parts/">
+                    <i class="fa fa-newspaper-o"></i> <br/>
+                    Blog
+                </a>
+                -->
+            </div>
+
+            <div class="teaser-image">
+                <img src="atiss/teaser.png" style="width:100%;">
+                <p class="caption">We present ATISS, a novel autoregressive
+                transformer architecture for creating plausible synthetic
+                indoor environments, given only the room type and its floor
+                plan. In contrast to prior work, which poses scene synthesis as
+                sequence generation, <strong>our model generates rooms as unordered
+                sets of objects</strong>. Our model leverages the permutation
+                equivariance of the transformer when conditioning on the
+                partial scene, and <strong>is trained to be
+                permutation-invariant across object orderings</strong>. Our
+                model is trained end-to-end as an autoregressive generative
+                model using only labeled 3D bounding boxes as supervision. Our
+                formulation allows applying a single trained model to automatic
+                layout synthesis and to a number of interactive scenarios with
+                versatile user input, such as automatic placement of
+                user-provided objects, object suggestion with user-provided
+                constraints, and room completion.
+                </p>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="column"><img src="atiss/ours_Bedroom-1540.gif"></div>
+                    <div class="column"><img src="atiss/ours_Bedroom-2719.gif"></div>
+                    <div class="column"><img src="atiss/ours_LivingDiningRoom-1203.gif"></div>
+                    <div class="column"><img src="atiss/ours_LivingDiningRoom-23371.gif"></div>
+                </div>
+                <div class="row">
+                    <div class="column"><img src="atiss/ours_Library-17832.gif"></div>
+                    <div class="column"><img src="atiss/ours_Library-43073.gif"></div>
+                    <div class="column"><img src="atiss/ours_DiningRoom-26805.gif"></div>
+                    <div class="column"><img src="atiss/ours_DiningRoom-12866.gif"></div>
+                </div>
+                <p class="caption"> Examples of generated bedrooms, living
+                rooms, dining rooms and libraries conditioned on various
+                floor plans and room types. For all visualizations we used <a
+                href="https://developer.nvidia.com/nvidia-omniverse-platform">NVIDIA
+                Omniverse</a>.
+                </p>
+            </div>
+
+            <div class="section-title">News</div>
+            <div class="content">
+                <ul>
+                    <li>[July 2021] Paper released on <a href=#>arXiv</a></li>
+                </ul>
+            </div>
+
+            <div class="section-title">Approach Overview</div>
+            <div class="content">
+            <p>Given an empty or a partially complete room of a specific type
+            together with its shape, as a top-down orthographic
+            projection of its floor, we want to learn a generative model that
+            populates the room with objects, whose functional composition and
+            spatial arrangement is plausible. In contrast to prior work,
+            we <strong>pose scene synthesis as an unordered set generation problem</strong> and
+            introduce ATISS, a novel autoregressive transformer architecture to
+            model this process. In particular, <strong>our model
+            generates meaningful furniture arrangements by sequentially placing
+            objects in a permutation-invariant fashion</strong>. We train ATISS
+            to maximize the log-likelihood of all possible permutations of
+            object arrangements in a collection of training scenes, labeled
+            only with object classes and 3D bounding boxes.</p>
+            
+            <p>Objects in a scene are represented as labeled 3D bounding boxes
+            and we model them with four random variables that describe their
+            category, size, orientation and location, \(o_j = \{\bf{c}_j,
+            \bf{s}_j, \bf{t}_j, \bf{r}_j\}\). The category \(\bf{c}_j\) is
+            modeled using a categorical variable over the total number of
+            object categories in the dataset and the size \(\bf{s}_j\),
+            location \(\bf{t}_j\) and orientation \(\bf{r}_j\) are modelled
+            with mixture of logistics distributions.</p>
+            <img src="atiss/training_overview.png" style="width:65%;">
+
+            <p><strong>During training</strong>, we start from a scene with M objects (coloured
+            squares, here \(M=5\)), we randomly permute them and keep the first
+            T objects (here \(T=3\)). We task our network to predict the next
+            object to be added in the scene given the subset of kept objects
+            (highlighted with grey) and its floor layout feature \(\bf{F}\).
+            Our loss function is the negative log-likelihood (NLL) of the next
+            object in the permuted sequence (green square).
+            </p>
+
+            <p><strong>During inference</strong>, we start with an empty
+            context embedding \(\bf{C}\) and the floor representation
+            \(\bf{F}\) of the room to be populated and autoregressively sample
+            attribute values from the predicted distributions. Once a new
+            object is generated, it is appended to the context \(\bf{C}\) to be used in
+            the next step of the generation process until the end symbol is
+            generated. To transform the predicted labeled bounding boxes to 3D
+            models we use object retrieval. In particular, we retrieve the
+            closest object from the dataset in terms of the euclidean distance
+            of the bounding box dimensions. A pictorial representation of the
+            generation process is provided in the figure below.
+            <p>
+
+            <img src="atiss/network_architecture.png" style="width:90%;">
+            <p>Our network consists of four main components: (i) the <strong>layout
+            encoder</strong> that maps the room shape to a feature representation
+            \(\bf{F}\), (ii) the <strong>structure encoder</strong> that maps the objects in the
+            scene into per-object context embeddings \(\bf{C} = \{C_j\}^M_{j=1}\) , (iii)
+            the <strong>transformer encoder</strong> that takes \(\bf{F}\), \(\bf{C}\) and a
+            query embedding \(\bf{q}\) and predicts the features \(\bf{\hat{q}}\) for the next
+            object to be generated and (iv) the <strong>attribute extractor</strong> that
+            predicts the attributes of the next object to be added in the
+            scene.
+            </p>
+            </div>
+
+            <div class="section-title">Scene Synthesis Results</div>
+            <div class="content">
+            <p>Our model can be used to generate furniture arrangements
+            conditioned on a floor plan and a specific room type. In the
+            following, we show examples of generated bedrooms (first row),
+            living rooms (second row), dining rooms (third row) and libraries
+            (fourth row) using our model conditioned on various floor plans.
+            We can easily notice that our model consistently generates
+            plausible room arrangements that preserve the functional properties
+            of all objects in the scene. Note that for all visualizations, we used <a
+            href="https://developer.nvidia.com/nvidia-omniverse-platform">NVIDIA
+            Omniverse</a>.
+            </p>
+            <div class="row">
+                <div class="column"><img src="atiss/ours_Bedroom-1989.gif"></div>
+                <div class="column"><img src="atiss/ours_Bedroom-4098.gif"></div>
+                <div class="column"><img src="atiss/ours_Bedroom-6174.gif"></div>
+                <div class="column"><img src="atiss/ours_Bedroom-34886.gif"></div>
+            </div>
+            <div class="row">
+                <div class="column"><img src="atiss/ours_DiningRoom-233.gif"></div>
+                <div class="column"><img src="atiss/ours_DiningRoom-2831.gif"></div>
+                <div class="column"><img src="atiss/ours_LivingDiningRoom-1889.gif"></div>
+                <div class="column"><img src="atiss/ours_DiningRoom-116178.gif"></div>
+            </div>
+            <div class="row">
+                <div class="column"><img src="atiss/ours_LivingDiningRoom-941.gif"></div>
+                <div class="column"><img src="atiss/ours_LivingDiningRoom-1172.gif"></div>
+                <div class="column"><img src="atiss/ours_LivingDiningRoom-563.gif"></div>
+                <div class="column"><img src="atiss/ours_LivingDiningRoom-491.gif"></div>
+            </div>
+            <div class="row">
+                <div class="column"><img src="atiss/ours_Library-1093.gif"></div>
+                <div class="column"><img src="atiss/ours_Library-8391.gif"></div>
+                <div class="column"><img src="atiss/ours_Library-19385.gif"></div>
+                <div class="column"><img src="atiss/ours_Library-9630.gif"></div>
+            </div>
+            </div>
+
+            <div class="section-title">Scene Completion Results</div>
+            <div class="content">
+            <p>In the following, we show scene completion examples. Starting
+            from a partially empty scene (left column), our model populates it by generating
+            meaningful object arrangements.
+            </p>
+            <div class="row">
+                <div class="column"><img src="atiss/scene_completion/partial_Bedroom-24002.gif"></div>
+                <div class="column" style="width: 15%; padding-top:50px;"><img src="atiss/scene_completion/scene_completion_arrow.png"></div>
+                <div class="column"><img src="atiss/scene_completion/complete_Bedroom-24002_002.gif"></div>
+                <div class="column"><img src="atiss/scene_completion/complete_Bedroom-24002_003.gif"></div>
+            </div>
+
+            <div class="row">
+                <div class="column"><img src="atiss/scene_completion/partial_MasterBedroom-529.gif"></div>
+                <div class="column" style="width: 15%; padding-top:50px;"><img src="atiss/scene_completion/scene_completion_arrow.png"></div>
+                <div class="column"><img src="atiss/scene_completion/complete_MasterBedroom-529_003.gif"></div>
+                <div class="column"><img src="atiss/scene_completion/complete_MasterBedroom-529_005.gif"></div>
+            </div>
+
+            <div class="row">
+                <div class="column"><img src="atiss/scene_completion/partial_Bedroom-48127.gif"></div>
+                <div class="column" style="width: 15%; padding-top:50px;"><img src="atiss/scene_completion/scene_completion_arrow.png"></div>
+                <div class="column"><img src="atiss/scene_completion/complete_Bedroom-48127_000.gif"></div>
+                <div class="column"><img src="atiss/scene_completion/complete_Bedroom-48127_001.gif"></div>
+            </div>
+            </div>
+
+            <div class="section-title">Object Suggestion Results</div>
+            <div class="content">
+            <p>Our model can also be used to provide object suggestions given a
+            scene and <strong>user specified location constraints</strong>. In
+            particular, a user specifies a region of acceptable positions to
+            place an object (here marked as a red box) and our model suggests
+            suitable objects to be placed inside this area of valid locations.
+            In case the user specifies a region that intersects with other objects in
+            the scene and our model cannot suggest a meaningful object to be
+            placed there, it simply suggests to add nothing (see first column).
+            </p>
+            <div class="row">
+                <div class="column"><img src="atiss/object_suggestion/input_Bedroom-664_000.gif"></div>
+                <div class="column"><img src="atiss/object_suggestion/input_LivingDiningRoom-74931_004.gif"></div>
+                <div class="column"><img src="atiss/object_suggestion/input_SecondBedroom_11769_000.gif"></div>
+                <div class="column"><img src="atiss/object_suggestion/input_MasterBedroom_12988_003.gif"></div>
+            </div>
+            <div class="row">
+                <div class="column"><img src="atiss/object_suggestion/suggestion_Bedroom-664_000.gif"></div>
+                <div class="column"><img src="atiss/object_suggestion/suggestion_LivingDiningRoom-74931_004.gif"></div>
+                <div class="column"><img src="atiss/object_suggestion/suggestion_SecondBedroom_11769_000.gif"></div>
+                <div class="column"><img src="atiss/object_suggestion/suggestion_MasterBedroom_12988_003.gif"></div>
+            </div>
+            </div>
+
+            <div class="section-title">Failure Cases Correction Results</div>
+            <div class="content">
+            <p>Another useful application of our model is its ability to
+            <strong>identify unnatural furniture layouts</strong> and reposition the problematic
+            objects such that they preserve their functional properties. The
+            problematic object, as identified by our model, is highlighted with
+            green. As soon as a problematic object is identified, our model repositions it in a more suitable location.
+            </p>
+            <div class="row">
+                <div class="column"><img src="atiss/failure_correction/failure_Bedroom-123453_000.gif"></div>
+                <div class="column"><img src="atiss/failure_correction/failure_Bedroom-6376_000.gif"></div>
+                <div class="column"><img src="atiss/failure_correction/failure_Bedroom-30225_000.gif"></div>
+                <div class="column"><img src="atiss/failure_correction/failure_LivingDiningRoom-35325_000.gif"></div>
+            </div>
+            <div class="row">
+                <div class="column"><img src="atiss/failure_correction/fixed_Bedroom-123453_000.gif"></div>
+                <div class="column"><img src="atiss/failure_correction/fixed_Bedroom-6376_000.gif"></div>
+                <div class="column"><img src="atiss/failure_correction/fixed_Bedroom-30225_000.gif"></div>
+                <div class="column"><img src="atiss/failure_correction/fixed_LivingDiningRoom-35325_000.gif"></div>
+            </div>
+            </div>
+
+            <div class="section-title">Citation</div>
+            <div class="bibtex">
+            <p>If you found this work influential or helpful for your research, please consider citing</p>
+            <pre><code>
+@Article{Paschalidou2021ARXIV,
+    title = {ATISS: Autoregressive Transformers for Indoor Scene Synthesis},
+    author = {Paschalidou Despoina and Kar Amlan and Maria Shugrina and Karsten Kreis and Geiger Andreas
+    and Fidler Sanja},
+    journal = {arXiv}
+    year = {2021}
+}</code></pre>
+            </div>
+
+    </body>
+</html>

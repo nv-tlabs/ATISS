@@ -1,0 +1,257 @@
+body {
+    padding-top: 30px;
+    background-color: #fff;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    color: #1a1a1a;
+    font-size: 10pt;
+    line-height: 1.8em;
+    text-align: justify;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+a {
+    text-decoration: none;
+    color: #0505af;
+}
+.section {
+    max-width: 950px;
+    margin: 0 auto;
+}
+.section > .title {
+    font-size: 18pt;
+    font-family: "Roboto", sans-serif;
+    color: #313436;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.8em;
+    clear: both;
+}
+.section > .title > span {
+    /*border-bottom: 1px solid #313436;*/
+    border-bottom: 2px solid #999;
+    padding-bottom: 4px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.section > .row {
+    clear: both;
+}
+.section .content {
+    margin-bottom: 2em;
+    font-size: 12pt;
+}
+.section .image {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+.section .image img {
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.section .image figcaption {
+    display: block;
+    text-align: center;
+    padding-top: 1.5em;
+    color: #888888;
+}
+.section > .page-title{
+    text-align: center;
+    font-size: 30px;
+    padding-bottom: 0.4em;
+}
+.section h1 {
+    text-align: center;
+    font-size: 32px;
+}
+.section h2 {
+    text-align: center;
+    font-size: 20px;
+    color: #add8e6;
+}
+
+.row_paper {
+    text-align: center;
+}
+.column_paper {
+    display: inline-block;
+    margin-bottom: 32px;
+}
+.column_paper > a {
+    display: block;
+}
+.column_paper > span:after {
+    content: "-";
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.column_paper > span:last-child:after {
+    content: "";
+}
+
+.conference {
+    text-align:center;
+    font-weight: bold;
+}
+
+.layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+    box-shadow:
+            0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+            5px 5px 0 0px #fff, /* The second layer */
+            5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+            10px 10px 0 0px #fff, /* The third layer */
+            10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+            15px 15px 0 0px #fff, /* The fourth layer */
+            15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+            20px 20px 0 0px #fff, /* The fifth layer */
+            20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+            25px 25px 0 0px #fff, /* The fifth layer */
+            25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+    margin-left: 10px;
+    margin-right: 45px;
+    margin-bottom: 25px;
+    width: 300px;
+}
+.row_paper .bibtex-entries > pre {
+    font-style: normal;
+    line-height: 1.2em;
+    text-align: left;
+    display: none;
+}
+.section-title {
+    font-size: 18pt;
+    font-family: "Roboto", sans-serif;
+    color: #313436;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.8em;
+    text-align: center;
+}
+.section-title:after {
+    content: " ";
+    display: block;
+    height: 2px;
+    margin-top: 4px;
+    background: #222;
+    background: linear-gradient(90deg, white 0%, #333 50%, white 100%);
+}
+h1.project-title {
+    font-weight: normal;
+    line-height: 120%;
+}
+.authors { text-align: center; }
+.authors a {
+    display: inline-block;
+    font-size: 20px;
+    padding: 15px;
+}
+.authors sup {
+    color: #313436;
+    font-size: 60%;
+}
+.affiliations {
+    font-size: 15px;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.project-conference {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.project-icons {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.project-icons a {
+    display: inline-block;
+    font-weight: bold;
+    padding: 0px 20px 0px 20px;
+}
+.project-icons i { font-size: 30px; }
+.teaser-image { margin-bottom: 30px;}
+.teaser-image img {
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.teaser-image span {
+    text-align: center;
+    font-style: italic;
+    font-size: 14px;
+    color: #000;
+}
+.teaser-image p.caption {
+    line-height: 130%;
+    width: 90%;
+    margin: 0 auto;
+}
+p.caption {
+    line-height: 130%;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 10pt;
+}
+.abstract {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.video {
+    text-align: center;
+    margin-bottom: 20px
+}
+
+img {
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.teaser-image figure {
+    display: inline-block;
+    margin: 0px;
+    vertical-align: top;
+}
+
+video {
+    display: block;
+    margin: auto;
+}
+
+.column {
+    float: left;
+    width: 24%;
+    margin: 1px;
+}
+.column img {
+    width: 100%;
+}
+.row {
+    margin-top:1px;
+    margin-bottom:2px;
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.section .bibtex {
+    margin: 32px 0px 32px 0px;
+    display: block;
+    font-size: 12pt;
+    clear: both;
+}
+pre {
+    background-color: #eee;
+    font-size: 14px;
+    white-space: pre;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    margin-top: 0px;
+}
