@@ -43,7 +43,7 @@ is our easy-to-use library for visualizing 3D data using Python and ModernGL and
 [matplotlib](https://matplotlib.org/) for the colormaps. Note that
 [simple-3dviz](http://simple-3dviz.com) provides a lightweight and easy-to-use
 scene viewer using [wxpython](https://www.wxpython.org/). If you wish you use
-our scripts for visualizing the reconstructed primitives, you will need to also
+our scripts for visualizing the generated scenes, you will need to also
 install [wxpython](https://anaconda.org/anaconda/wxpython). Note that for all
 the renderings in the paper we used NVIDIA's
 [OMNIVERSE](https://www.nvidia.com/en-us/omniverse/).
@@ -56,7 +56,7 @@ conda env create -f environment.yaml
 conda activate atiss
 ```
 
-Next compile the extenstion modules. You can do this via
+Next compile the extension modules. You can do this via
 ```
 python setup.py build_ext --inplace
 pip install -e .
@@ -73,7 +73,7 @@ dataset. To download both datasets, please refer to the instructions provided in
 [webpage](https://tianchi.aliyun.com/specials/promotion/alibaba-3d-scene-dataset).
 As soon as you have downloaded the 3D-FRONT and the 3D-FUTURE dataset, you are
 ready to start the preprocessing. In addition to a preprocessing script
-(`preprocess_data.py`), we also provide a very useful script for visualing
+(`preprocess_data.py`), we also provide a very useful script for visualising
 3D-FRONT scenes (`render_threedfront_scene.py`), which you can easily execute by running
 ```
 python render_threedfront_scene.py SCENE_ID path_to_output_dir path_to_3d_front_dataset_dir path_to_3d_future_dataset_dir path_to_3d_future_model_info path_to_floor_plan_texture_images
@@ -128,7 +128,7 @@ has been preprocessed and if it is it moves forward to the next scene.
 
 As soon as you have installed all dependencies and have generated the
 preprocessed data, you can now start training new models from scratch, evaluate
-our pre-trained models and visualize the recovered primitives using one of our
+our pre-trained models and visualize the generated scenes using one of our
 pre-trained models. All scripts expect a path to a config file. In the `config`
 folder you can find the configuration files for the different room types. Make
 sure to change the `dataset_directory` argument to the path where you saved the
