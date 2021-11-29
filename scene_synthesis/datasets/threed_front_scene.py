@@ -85,24 +85,33 @@ class ModelInfo(object):
             # Create a dictionary of all models/assets in the dataset
             for m in self.model_info_data:
                 # Keep track of the different styles
-                if m["style"] not in self._styles:
+                if m["style"] not in self._styles and m["style"] is not None:
                     self._styles.append(m["style"])
                 # Keep track of the different themes
                 if m["theme"] not in self._themes and m["theme"] is not None:
                     self._themes.append(m["theme"])
                 # Keep track of the different super-categories
-                if m["super-category"] not in self._super_categories:
+                if m["super-category"] not in self._super_categories and m["super-category"] is not None:
                     self._super_categories.append(m["super-category"])
                 # Keep track of the different categories
-                if m["category"] not in self._categories:
+                if m["category"] not in self._categories and m["category"] is not None:
                     self._categories.append(m["category"])
                 # Keep track of the different categories
-                if m["material"] not in self._materials:
+                if m["material"] not in self._materials and m["material"] is not None:
                     self._materials.append(m["material"])
 
+                super_cat = "unknown_super-category"
+                cat = "unknown_category"
+
+                if m["super-category"] is not None:
+                    super_cat = m["super-category"].lower().replace(" / ", "/")
+
+                if m["category"] is not None:
+                    cat = m["category"].lower().replace(" / ", "/")
+
                 self._model_info[m["model_id"]] = Asset(
-                    m["super-category"].lower().replace(" / ", "/"),
-                    m["category"].lower().replace(" / ", "/"),
+                    super_cat,
+                    cat, 
                     m["style"],
                     m["theme"],
                     m["material"]
