@@ -20,3 +20,7 @@ env3/
 
 *.pkl
 wandb/
+output/
+
+#VS Code settings
+.vscode/
