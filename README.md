@@ -116,13 +116,27 @@ time, we cache the parsed scenes and save them to the `/tmp/threed_front.pkl`
 file. Therefore, once you parse the 3D-FRONT scenes once you can provide this
 path in the environment variable `PATH_TO_SCENES` for the next time you run this script as follows:
 ```
-PATH_TO_SCENES="/tmp/threed_front.pkl" python preprocess_data.py path_to_output_dir path_to_3d_front_dataset_dir path_to_3d_future_dataset_dir path_to_3d_future_model_info path_to_floor_plan_texture_images --dataset_filtering threed_front_bedroom
-
+PATH_TO_SCENES="/tmp/threed_front.pkl" python preprocess_data.py path_to_output_dir path_to_3d_front_dataset_dir path_to_3d_future_dataset_dir path_to_3d_future_model_info path_to_floor_plan_texture_images --dataset_filtering room_type
 ```
 
 Finally, to further reduce the pre-processing time, note that it is possible to
 run this script in multiple threads, as it automatically checks whether a scene
 has been preprocessed and if it is it moves forward to the next scene.
+
+### How to pickle the 3D-FUTURE dataset
+
+Most of our scripts require to provide a path to a file that contains the
+parsed `ThreedFutureDataset` after being pickled. To do this, we provide the
+`pickle_threed_future_dataset.py` that does this automatically for you. You can simply run this script as follows:
+```
+python pickle_threed_future_dataset.py path_to_output_dir path_to_3d_front_dataset_dir path_to_3d_future_dataset_dir path_to_3d_future_model_info --dataset_filtering room_type
+```
+Note that by specifying the `PATH_TO_SCENES` environment variable this script
+will run significantly faster. Moreover, this step is necessary for all room
+types containing different objects. For the case of 3D-FRONT this is for the
+bedrooms and the living/dining rooms, thus you have to run this script twice
+with different `--dataset_filtering` options. Please check the help menu for
+additional details.
 
 ## Usage
 
