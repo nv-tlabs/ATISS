@@ -15,13 +15,13 @@ class SplitsBuilder(object):
         self._splits = {}
 
     def train_split(self):
-        return self.splits["train"]
+        return self._splits["train"]
 
     def test_split(self):
-        return self.splits["test"]
+        return self._splits["test"]
 
     def val_split(self):
-        return self.splits["val"]
+        return self._splits["val"]
 
     def _parse_train_test_splits_file(self):
         with open(self._train_test_splits_file, "r") as f:
