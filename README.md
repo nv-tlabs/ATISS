@@ -82,7 +82,11 @@ You can also visualize the walls, the windows as well as objects with textures
 by setting the corresponding arguments. Apart from only visualizing the scene
 with scene id `SCENE_ID`, the `render_threedfront_scene.py` script also
 generates a subfolder in the output folder, specified via the
-`path_to_output_dir` argument that contains the .obj files as well as the textures of all objects in this scene.
+`path_to_output_dir` argument that contains the .obj files as well as the
+textures of all objects in this scene. Note that examples of the expected scene ids
+`SCENE_ID` can be found in the train/test/val split files for the various rooms
+in the [config][https://github.com/nv-tlabs/ATISS/tree/master/config] folder,
+e.g. MasterBedroom-28057, LivingDiningRoom-4125 etc.
 
 
 ### Data Preprocessing
