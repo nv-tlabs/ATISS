@@ -14,8 +14,9 @@ class FixedPositionalEncoding(nn.Module):
     def __init__(self, proj_dims, val=0.1):
         super().__init__()
         ll = proj_dims//2
-        exb = 2 * torch.linspace(0, ll-1, ll) / proj_dims
+        exb = torch.linspace(0, ll-1, ll) / proj_dims
         self.sigma = 1.0 / torch.pow(val, exb).view(1, -1)
+        self.sigma = 2 * torch.pi * self.sigma
 
     def forward(self, x):
         return torch.cat([
