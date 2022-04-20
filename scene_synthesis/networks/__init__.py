@@ -43,7 +43,10 @@ def optimizer_factory(config, parameters):
     optimizer = config.get("optimizer", "Adam")
     lr = config.get("lr", 1e-3)
     momentum = config.get("momentum", 0.9)
-    weight_decay = config.get("weight_decay", 0.0)
+    # weight_decay = config.get("weight_decay", 0.0)
+    # Weight decay was set to 0.0 in the paper's experiments. We note that
+    # increasing the weight_decay deteriorates performance.
+    weight_decay = 0.0
 
     if optimizer == "SGD":
         return torch.optim.SGD(

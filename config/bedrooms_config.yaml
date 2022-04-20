@@ -1,7 +1,7 @@
 data:
     dataset_type: "cached_threedfront"
     encoding_type: "cached_autoregressive_wocm"
-    dataset_directory: "path_to_dataset_directory"
+    dataset_directory: "/media/paschalidoud/goproorgohome/3D_FRONT_processed/bedrooms"
     annotation_file: "../config/bedroom_threed_front_splits.csv"
     augmentations: ["rotations"]
     filter_fn: "threed_front_bedroom"
@@ -37,7 +37,7 @@ training:
     save_frequency: 50
     optimizer: Adam
     lr: 0.0001
-    weight_decay: 0.001
+    weight_decay: 0.0
 
 validation:
     splits: ["test"]
