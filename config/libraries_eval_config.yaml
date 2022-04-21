@@ -5,7 +5,6 @@ data:
     annotation_file: "../config/library_threed_front_splits.csv"
     filter_fn: "threed_front_library"
     train_stats: "dataset_stats.txt"
-    filter_fn: "no_filtering"
     room_layout_size: "64,64"
 
 network:
