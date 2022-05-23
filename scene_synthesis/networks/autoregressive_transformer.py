@@ -234,10 +234,10 @@ class AutoregressiveTransformer(BaseAutoregressiveTransformer):
                 break
 
         return {
-            "class_labels": boxes["class_labels"].cpu(),
-            "translations": boxes["translations"].cpu(),
-            "sizes": boxes["sizes"].cpu(),
-            "angles": boxes["angles"].cpu()
+            "class_labels": boxes["class_labels"].to("cpu"),
+            "translations": boxes["translations"].to("cpu"),
+            "sizes": boxes["sizes"].to("cpu"),
+            "angles": boxes["angles"].to("cpu")
         }
 
     def autoregressive_decode_with_class_label(

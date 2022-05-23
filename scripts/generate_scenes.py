@@ -198,7 +198,10 @@ def main(argv):
             current_scene, args.path_to_floor_plan_textures
         )
 
-        bbox_params = network.generate_boxes(room_mask=room_mask)
+        bbox_params = network.generate_boxes(
+            room_mask=room_mask.to(device),
+            device=device
+        )
         boxes = dataset.post_process(bbox_params)
         bbox_params_t = torch.cat([
             boxes["class_labels"],
