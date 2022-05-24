@@ -3,6 +3,8 @@ data:
     encoding_type: "cached_autoregressive_wocm"
     dataset_directory: "/media/paschalidoud/goproorgohome/3D_FRONT_processed/bedrooms"
     annotation_file: "../config/bedroom_threed_front_splits.csv"
+    path_to_invalid_scene_ids: "../config/invalid_threed_front_rooms.txt"
+    path_to_invalid_bbox_jids: "../config/black_list.txt"
     augmentations: ["rotations"]
     filter_fn: "threed_front_bedroom"
     train_stats: "dataset_stats.txt"

@@ -201,3 +201,4 @@ def parse_threed_future_models(
         pickle.dump(furnitures, open("/tmp/threed_future_model.pkl", "wb"))
 
     return furnitures
+

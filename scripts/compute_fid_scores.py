@@ -12,6 +12,8 @@ import argparse
 import os
 import sys
 
+import torch
+
 import numpy as np
 from PIL import Image
 
@@ -96,7 +98,7 @@ def main(argv):
             shutil.copyfile(fi, "{}/{:05d}.png".format(path_to_test_fake, i))
 
         # Compute the FID score
-        fid_score = fid.compute_fid(path_to_test_real, path_to_test_fake)
+        fid_score = fid.compute_fid(path_to_test_real, path_to_test_fake, device=torch.device("cpu"))
         scores.append(fid_score)
         print(fid_score)
     print(sum(scores) / len(scores))

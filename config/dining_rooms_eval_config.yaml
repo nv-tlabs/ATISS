@@ -3,7 +3,9 @@ data:
     encoding_type: "cached_autoregressive_wocm_eval"
     dataset_directory: "path_to_dataset_directory"
     annotation_file: "../config/diningroom_threed_front_splits.csv"
-    filter_fn: "threed_front_diningroom"
+    path_to_invalid_scene_ids: "../config/invalid_threed_front_rooms.txt"
+    path_to_invalid_bbox_jids: "../config/black_list.txt"
+    filter_fn: "no_filtering"
     train_stats: "dataset_stats.txt"
     room_layout_size: "64,64"
 
