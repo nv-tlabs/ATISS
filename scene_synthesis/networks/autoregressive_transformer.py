@@ -127,13 +127,13 @@ class AutoregressiveTransformer(BaseAutoregressiveTransformer):
         # Apply the positional embedding along each dimension of the position
         # property
         pos_f_x = self.pe_pos_x(translations[:, :, 0:1])
-        pos_f_y = self.pe_pos_x(translations[:, :, 1:2])
-        pos_f_z = self.pe_pos_x(translations[:, :, 2:3])
+        pos_f_y = self.pe_pos_y(translations[:, :, 1:2])
+        pos_f_z = self.pe_pos_z(translations[:, :, 2:3])
         pos_f = torch.cat([pos_f_x, pos_f_y, pos_f_z], dim=-1)
 
         size_f_x = self.pe_size_x(sizes[:, :, 0:1])
-        size_f_y = self.pe_size_x(sizes[:, :, 1:2])
-        size_f_z = self.pe_size_x(sizes[:, :, 2:3])
+        size_f_y = self.pe_size_y(sizes[:, :, 1:2])
+        size_f_z = self.pe_size_z(sizes[:, :, 2:3])
         size_f = torch.cat([size_f_x, size_f_y, size_f_z], dim=-1)
 
         angle_f = self.pe_angle_z(angles)
@@ -173,13 +173,13 @@ class AutoregressiveTransformer(BaseAutoregressiveTransformer):
             # Apply the positional embedding along each dimension of the
             # position property
             pos_f_x = self.pe_pos_x(translations[:, 1:, 0:1])
-            pos_f_y = self.pe_pos_x(translations[:, 1:, 1:2])
-            pos_f_z = self.pe_pos_x(translations[:, 1:, 2:3])
+            pos_f_y = self.pe_pos_y(translations[:, 1:, 1:2])
+            pos_f_z = self.pe_pos_z(translations[:, 1:, 2:3])
             pos_f = torch.cat([pos_f_x, pos_f_y, pos_f_z], dim=-1)
 
             size_f_x = self.pe_size_x(sizes[:, 1:, 0:1])
-            size_f_y = self.pe_size_x(sizes[:, 1:, 1:2])
-            size_f_z = self.pe_size_x(sizes[:, 1:, 2:3])
+            size_f_y = self.pe_size_y(sizes[:, 1:, 1:2])
+            size_f_z = self.pe_size_z(sizes[:, 1:, 2:3])
             size_f = torch.cat([size_f_x, size_f_y, size_f_z], dim=-1)
 
             angle_f = self.pe_angle_z(angles[:, 1:])
@@ -531,13 +531,13 @@ class AutoregressiveTransformerPE(AutoregressiveTransformer):
         # Apply the positional embedding along each dimension of the position
         # property
         pos_f_x = self.pe_pos_x(translations[:, :, 0:1])
-        pos_f_y = self.pe_pos_x(translations[:, :, 1:2])
-        pos_f_z = self.pe_pos_x(translations[:, :, 2:3])
+        pos_f_y = self.pe_pos_y(translations[:, :, 1:2])
+        pos_f_z = self.pe_pos_z(translations[:, :, 2:3])
         pos_f = torch.cat([pos_f_x, pos_f_y, pos_f_z], dim=-1)
 
         size_f_x = self.pe_size_x(sizes[:, :, 0:1])
-        size_f_y = self.pe_size_x(sizes[:, :, 1:2])
-        size_f_z = self.pe_size_x(sizes[:, :, 2:3])
+        size_f_y = self.pe_size_y(sizes[:, :, 1:2])
+        size_f_z = self.pe_size_z(sizes[:, :, 2:3])
         size_f = torch.cat([size_f_x, size_f_y, size_f_z], dim=-1)
 
         angle_f = self.pe_angle_z(angles)
@@ -578,13 +578,13 @@ class AutoregressiveTransformerPE(AutoregressiveTransformer):
             # Apply the positional embedding along each dimension of the
             # position property
             pos_f_x = self.pe_pos_x(translations[:, 1:, 0:1])
-            pos_f_y = self.pe_pos_x(translations[:, 1:, 1:2])
-            pos_f_z = self.pe_pos_x(translations[:, 1:, 2:3])
+            pos_f_y = self.pe_pos_y(translations[:, 1:, 1:2])
+            pos_f_z = self.pe_pos_z(translations[:, 1:, 2:3])
             pos_f = torch.cat([pos_f_x, pos_f_y, pos_f_z], dim=-1)
 
             size_f_x = self.pe_size_x(sizes[:, 1:, 0:1])
-            size_f_y = self.pe_size_x(sizes[:, 1:, 1:2])
-            size_f_z = self.pe_size_x(sizes[:, 1:, 2:3])
+            size_f_y = self.pe_size_y(sizes[:, 1:, 1:2])
+            size_f_z = self.pe_size_z(sizes[:, 1:, 2:3])
             size_f = torch.cat([size_f_x, size_f_y, size_f_z], dim=-1)
 
             angle_f = self.pe_angle_z(angles[:, 1:])
