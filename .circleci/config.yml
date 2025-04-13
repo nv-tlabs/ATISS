@@ -1,0 +1,64 @@
+version: 2.1
+orbs:
+  python: circleci/python@2
+  evals: circleci/evals@2.0
+jobs:
+  test-python:
+    docker:
+      - image: cimg/python:3.8-node
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip-dist
+      - run:
+          name: Run tests
+          command: pytest --junitxml=junit.xml || ((($? == 5)) && echo 'Did not find any
+            tests to run.')
+      - store_test_results:
+          path: junit.xml
+  build-package:
+    docker:
+      - image: cimg/python:3.8-node
+    steps:
+      - checkout
+      - run:
+          name: Create the ~/artifacts directory if it doesn't exist
+          command: mkdir -p ~/artifacts
+      - python/dist
+      - store_artifacts:
+          path: dist
+          destination: ~/artifacts
+  deploy:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - run:
+          name: deploy
+          command: "#e.g. ./deploy.sh"
+  evals-test-assertions-job:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - evals/test:
+          assertions: assertions.json
+          metrics: eval_results.json
+          results: test_results.xml
+workflows:
+  build-and-test:
+    jobs:
+      - test-python:
+          context:
+            - OpenAI-TEST-TRIAL-FREE
+            - Pinecone-testing
+            - LangSmith-testing
+      - build-package:
+          requires:
+            - test-python
+          context:
+            - OpenAI-TEST-TRIAL-FREE
+            - Pinecone-testing
+            - LangSmith-testing
+  test-eval-workflow:
+    jobs:
+      - evals-test-assertions-job
